@@ -6,6 +6,16 @@
 Создать новые модели
 `npm run prisma:push`
 
+## .env
+``` 
+POSTGRES_URL=
+POSTGRES_URL_NON_POOLING=
+
+NEXT_PUBLIC_API_URL=
+
+NEXT_PUBLIC_RESEND_API_KEY=
+```
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
