@@ -4,7 +4,7 @@ import React from 'react';
 import toast from 'react-hot-toast';
 import { ProductWithRelations } from '@/@types/prisma';
 // import { useCart } from '@/hooks/use-cart';
-import { cn } from '@/shared/lib/utils';
+import { cn } from '@/shared/lib';
 import { Button } from '../ui/button';
 import { Title } from './title';
 

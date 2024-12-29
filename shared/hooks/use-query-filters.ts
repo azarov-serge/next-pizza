@@ -5,6 +5,7 @@ import qs from 'qs';
 import { Filters } from './use-filters';
 
 export const useQueryFilters = (filters: Filters) => {
+	const isMounted = React.useRef(false);
 	const router = useRouter();
 
 	const updateQueryParams = React.useMemo(
@@ -22,13 +23,17 @@ export const useQueryFilters = (filters: Filters) => {
 	);
 
 	React.useEffect(() => {
-		const { prices, ingredients, sizes, pizzaTypes } = filters;
-		updateQueryParams({
-			...prices,
-			ingredients: Array.from(ingredients),
-			sizes: Array.from(sizes),
-			pizzaTypes: Array.from(pizzaTypes),
-		});
+		if (isMounted) {
+			const { prices, ingredients, sizes, pizzaTypes } = filters;
+			updateQueryParams({
+				...prices,
+				ingredients: Array.from(ingredients),
+				sizes: Array.from(sizes),
+				pizzaTypes: Array.from(pizzaTypes),
+			});
+		}
+
+		isMounted.current = true;
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [filters]);
 };

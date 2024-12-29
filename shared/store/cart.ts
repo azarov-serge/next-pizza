@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { getCartDetails } from '../lib/utils';
+import { getCartDetails } from '../lib';
 import { Api } from '../services/api-client';
 import { CreateCartItemValues } from '../services/dto/cart';
 
@@ -19,7 +19,7 @@ export interface CartState {
 	loading: boolean;
 	error: boolean;
 	totalAmount: number;
-	items: CartStateItem[];
+	items: CartStateItem[] | null;
 	fetchCartItems: () => Promise<void>;
 	updateItemQuantity: (id: number, quantity: number) => Promise<void>;
 	addCartItem: (values: CreateCartItemValues) => Promise<void>;
@@ -27,7 +27,7 @@ export interface CartState {
 }
 
 export const useCartStore = create<CartState>((set) => ({
-	items: [],
+	items: null,
 	error: false,
 	loading: true,
 	totalAmount: 0,
@@ -36,7 +36,7 @@ export const useCartStore = create<CartState>((set) => ({
 			set((state) => ({
 				loading: true,
 				error: false,
-				items: state.items.map((item) =>
+				items: state.items?.map((item) =>
 					item.id === id ? { ...item, disabled: true } : item,
 				),
 			}));
@@ -48,7 +48,7 @@ export const useCartStore = create<CartState>((set) => ({
 		} finally {
 			set((state) => ({
 				loading: false,
-				items: state.items.map((item) =>
+				items: state.items?.map((item) =>
 					item.id === id ? { ...item, disabled: false } : item,
 				),
 			}));
@@ -68,14 +68,25 @@ export const useCartStore = create<CartState>((set) => ({
 	},
 	updateItemQuantity: async (id: number, quantity: number) => {
 		try {
-			set({ loading: true, error: false });
+			set((state) => ({
+				loading: true,
+				error: false,
+				items: state.items?.map((item) =>
+					item.id === id ? { ...item, disabled: true } : item,
+				),
+			}));
 			const data = await Api.cart.updateItemQuantity(id, quantity);
 			set(getCartDetails(data));
 		} catch (error) {
 			console.error(error);
 			set({ error: true });
 		} finally {
-			set({ loading: false });
+			set((state) => ({
+				loading: false,
+				items: state.items?.map((item) =>
+					item.id === id ? { ...item, disabled: false } : item,
+				),
+			}));
 		}
 	},
 	addCartItem: async (values: CreateCartItemValues) => {

@@ -3,8 +3,8 @@
 import React from 'react';
 import { Trash2Icon } from 'lucide-react';
 import debounce from 'lodash.debounce';
-import { cn } from '@/shared/lib/utils';
-import { useCartStore } from '@/shared/store/cart';
+import { useCart } from '@/shared/hooks';
+import { cn } from '@/shared/lib';
 import * as CartItemDetails from './cart-item-details';
 import { CartItemProps } from './cart-item-details/cart-item-details.types';
 import { CountButton } from './count-button';
@@ -29,8 +29,7 @@ export const DrawerCartItem: React.FC<Props> = ({
 	disabled,
 	className,
 }) => {
-	const removeCartItem = useCartStore((state) => state.removeCartItem);
-	const updateItemQuantity = useCartStore((state) => state.updateItemQuantity);
+	const { removeCartItem, updateItemQuantity } = useCart();
 
 	const onClickCountButton = debounce((type: 'plus' | 'minus') => {
 		updateItemQuantity(id, type === 'plus' ? quantity + 1 : quantity - 1);

@@ -1,6 +1,13 @@
 import { prisma } from '@/prisma/prisma';
-import { Container, Filters, ProductsGroupList, Title, TopBar } from '@/shared/components/shared';
-import { findPizzas, GetSearchParams } from '@/shared/lib/utils';
+import {
+	Container,
+	Filters,
+	ProductsGroupList,
+	Stories,
+	Title,
+	TopBar,
+} from '@/shared/components/shared';
+import { findPizzas, GetSearchParams } from '@/shared/lib';
 
 export default async function Home({ searchParams }: { searchParams: GetSearchParams }) {
 	const categories = (await findPizzas(searchParams)).filter(
@@ -13,6 +20,7 @@ export default async function Home({ searchParams }: { searchParams: GetSearchPa
 				<Title text="Все пиццы" size="lg" className="font-extrabold" />
 			</Container>
 			<TopBar categories={categories} />
+			<Stories />
 			<Container className="mt-10 pb-14">
 				<div className="flex gap-[60px]">
 					<div className="w-[250px]">

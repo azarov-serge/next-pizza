@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import crypto from 'crypto';
 import { prisma } from '@/prisma/prisma';
-import { findOrCreateCart, updateCartTotalAmount } from '@/shared/lib/utils';
+import { findOrCreateCart, updateCartTotalAmount } from '@/shared/lib';
 import { CreateCartItemValues } from '@/shared/services/dto/cart';
 
 export async function GET(req: NextRequest) {

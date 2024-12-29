@@ -4,7 +4,7 @@ import React from 'react';
 import { useClickAway, useDebounce } from 'react-use';
 import Link from 'next/link';
 import { Search } from 'lucide-react';
-import { cn } from '@/shared/lib/utils';
+import { cn } from '@/shared/lib';
 import { Api } from '@/shared/services/api-client';
 import { Product } from '@prisma/client';
 

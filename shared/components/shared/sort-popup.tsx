@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowUpDown } from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/shared/components/ui';
-import { cn } from '@/shared/lib/utils';
+import { cn } from '@/shared/lib';
 
 interface Props {
 	className?: string;

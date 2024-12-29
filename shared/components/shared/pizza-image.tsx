@@ -1,7 +1,7 @@
 // import { PizzaSize } from '@/hooks/use-choose-pizza';
 import React from 'react';
 import { PizzaSize } from '@/shared/constants/pizza';
-import { cn } from '@/shared/lib/utils';
+import { cn } from '@/shared/lib';
 
 interface Props {
 	className?: string;

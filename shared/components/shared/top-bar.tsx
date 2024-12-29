@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { cn } from '@/shared/lib/utils';
+import { cn } from '@/shared/lib';
 import { Category } from '@prisma/client';
 import { CartButton } from './cart-button';
 import { Categories } from './categories';

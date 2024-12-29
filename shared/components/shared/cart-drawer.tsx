@@ -31,7 +31,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
 					{totalAmount > 0 && (
 						<SheetHeader>
 							<SheetTitle>
-								В корзине <span className="font-bold">{items.length} товара</span>
+								В корзине <span className="font-bold">{items?.length} товара</span>
 							</SheetTitle>
 						</SheetHeader>
 					)}
@@ -65,7 +65,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
 					{totalAmount > 0 && (
 						<>
 							<div className="-mx-6 mt-5 overflow-auto flex-1">
-								{items.map((item) => (
+								{items?.map((item) => (
 									<div key={item.id} className="mb-2">
 										<DrawerCartItem
 											id={item.id}
@@ -93,7 +93,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
 										<span className="font-bold text-lg">{totalAmount} ₽</span>
 									</div>
 
-									<Link href="/cart">
+									<Link href="/checkout">
 										<Button
 											onClick={() => setRedirecting(true)}
 											loading={loading || redirecting}

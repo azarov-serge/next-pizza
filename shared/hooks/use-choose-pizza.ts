@@ -2,7 +2,7 @@ import React from 'react';
 import { useSet } from 'react-use';
 import { Ingredient, ProductItem } from '@prisma/client';
 import { mapPizzaType, PizzaSize, PizzaType } from '../constants/pizza';
-import { calcTotalPizzaPrice, getAvailablePizzaSizes } from '../lib/utils';
+import { calcTotalPizzaPrice, getAvailablePizzaSizes } from '../lib';
 
 export const useChoosePizza = ({
 	ingredients,

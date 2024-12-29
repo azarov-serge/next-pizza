@@ -1,5 +1,5 @@
 import { Minus, Plus } from 'lucide-react';
-import { cn } from '@/shared/lib/utils';
+import { cn } from '@/shared/lib';
 import { Button } from '../ui';
 import { CountButtonProps } from './count-button';
 
@@ -18,6 +18,7 @@ export const CountIconButton: React.FC<IconButtonProps> = ({
 }) => {
 	return (
 		<Button
+			type="button"
 			variant="outline"
 			disabled={disabled}
 			onClick={onClick}

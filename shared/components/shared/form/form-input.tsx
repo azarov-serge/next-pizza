@@ -22,11 +22,8 @@ export const FormInput: React.FC<Props> = ({ className, name, label, required, .
 		setValue,
 	} = useFormContext();
 
-	console.log('+++', { register });
-
-	const errorText = errors?.[name]?.message as string;
-
 	const text = watch(name);
+	const errorText = errors?.[name]?.message as string;
 
 	const onClickClear = () => {
 		setValue(name, '', { shouldValidate: true });
@@ -41,7 +38,7 @@ export const FormInput: React.FC<Props> = ({ className, name, label, required, .
 			)}
 
 			<div className="relative">
-				<Input className="h-12 text-md" {...props} />
+				<Input className="h-12 text-md" {...register(name)} {...props} />
 
 				{Boolean(text) && <ClearButton onClick={onClickClear} />}
 			</div>

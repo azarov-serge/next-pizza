@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 import { ProductWithRelations } from '@/@types/prisma';
 import { pizzaTypes } from '@/shared/constants/pizza';
 import { useChoosePizza } from '@/shared/hooks';
-import { cn } from '@/shared/lib/utils';
+import { cn } from '@/shared/lib';
 import { Button } from '../ui/button';
 import { Ingredient } from './ingredient';
 import { PizzaImage } from './pizza-image';

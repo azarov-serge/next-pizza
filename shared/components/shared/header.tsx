@@ -1,9 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { User } from 'lucide-react';
-import { cn } from '@/shared/lib/utils';
-import { Button } from '../ui/button';
+// import { User } from 'lucide-react';
+import { cn } from '@/shared/lib';
+// import { Button } from '../ui/button';
 import { CartButton } from './cart-button';
 import { Container } from './container';
 import { SearchInput } from './search-input';
@@ -35,10 +35,10 @@ export const Header: React.FC<Props> = ({ className, hasSearch = true, hasCart =
 				)}
 
 				<div className="flex items-center gap-3">
-					<Button variant="outline" type="button" className="flex items-center gap-1">
+					{/* <Button variant="outline" type="button" className="flex items-center gap-1">
 						<User size={16} />
 						Войти
-					</Button>
+					</Button> */}
 
 					{hasCart && (
 						<div>
